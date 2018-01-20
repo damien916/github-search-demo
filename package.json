@@ -1,8 +1,8 @@
 {
-  "name": "spotify-search",
+  "name": "github-search-demo",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/damien916/spotify-search.git",
+  "repository": "https://github.com/damien916/github-search-demo.git",
   "author": "Damien Virlouvet <damien.virlouvet@gmail.com>",
   "license": "MIT",
   "dependencies": {

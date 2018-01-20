@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { actionTypes } from '../actions/users'
 
-const getRepository = entity => ({
+export const getRepository = entity => ({
   id: entity.id,
   name: entity.name,
   userId: entity.owner.id,
@@ -12,7 +12,7 @@ const getRepository = entity => ({
   watchers: entity.watchers_count
 })
 
-const byId = (state = {}, action) => {
+export const byId = (state = {}, action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_REPOSITORIES}_FULFILLED`:
       return action.payload
@@ -23,7 +23,7 @@ const byId = (state = {}, action) => {
   }
 }
 
-const allIds = (state = [], action) => {
+export const allIds = (state = [], action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_REPOSITORIES}_FULFILLED`:
       return action.payload.filter(entity => !entity.private).map(entity => entity.id)
@@ -32,7 +32,7 @@ const allIds = (state = [], action) => {
   }
 }
 
-const error = (state = false, action) => {
+export const error = (state = false, action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_REPOSITORIES}_PENDING`:
     case `${actionTypes.FETCH_REPOSITORIES}_FULFILLED`:

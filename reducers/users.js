@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
 import { actionTypes } from '../actions/users'
 
-const getUser = entity => ({
+export const getUser = entity => ({
   id: entity.id,
   name: entity.login,
   url: entity.html_url,
   avatar: entity.avatar_url
 })
 
-const byId = (state = {}, action) => {
+export const byId = (state = {}, action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_USERS}_FULFILLED`:
       return action.payload.items.reduce((obj, entity) => ({ ...obj, [entity.id]: getUser(entity)}), {})
@@ -17,7 +17,7 @@ const byId = (state = {}, action) => {
   }
 }
 
-const allIds = (state = [], action) => {
+export const allIds = (state = [], action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_USERS}_FULFILLED`:
       return action.payload.items.map(entity => entity.id)
@@ -26,7 +26,7 @@ const allIds = (state = [], action) => {
   }
 }
 
-const currentUser = (state = {}, action) => {
+export const currentUser = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_USER:
       return action.user
@@ -38,7 +38,7 @@ const currentUser = (state = {}, action) => {
   }
 }
 
-const error = (state = false, action) => {
+export const error = (state = false, action) => {
   switch (action.type) {
     case `${actionTypes.FETCH_USERS}_PENDING`:
     case `${actionTypes.FETCH_USERS}_FULFILLED`:

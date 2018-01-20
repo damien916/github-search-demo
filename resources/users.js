@@ -5,10 +5,10 @@ class ResourceUsers extends ResourceFactory {
     super({ entrypoint: 'users' })
   }
 
-  getRepositories (user = '') {
+  getRepositories (userName = '') {
     return this.getAll(
       { },
-      { entrypoint: `${this.entrypoint}/${user}/repos` }
+      { entrypoint: `${this.entrypoint}/${userName}/repos` }
     )
   }
 }

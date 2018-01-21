@@ -18,12 +18,14 @@ type Props = {
 
 class Index extends React.Component<Props> {
   static async getInitialProps ({ store, isServer, req, query }) {
-    if (typeof query.username !== 'undefined') {
-      await store.dispatch(fetchRepositories(query.username))
-    }
+    if (isServer) { // SSR
+      if (typeof query.username !== 'undefined') {
+        await store.dispatch(fetchRepositories(query.username))
+      }
 
-    if (typeof query.view !== 'undefined') {
-      await store.dispatch(setSettings({view: query.view}))
+      if (typeof query.view !== 'undefined') {
+        await store.dispatch(setSettings({view: query.view}))
+      }
     }
 
     // Ensures material-ui renders the correct css prefixes server-side

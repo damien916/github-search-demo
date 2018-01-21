@@ -9,6 +9,7 @@ import SearchBar from '../components/SearchBar'
 
 type Props = {
   users: Object,
+  currentUser: Object,
   fetchUsers: Function,
   setCurrentUser: Function,
   fetchRepositories: Function
@@ -16,9 +17,12 @@ type Props = {
 
 class SearchBarContainer extends React.Component<Props> {
   delayedSearch: Function
+  query: String
 
   constructor (props) {
     super(props)
+
+    this.query = _.get(this.props.currentUser, 'name', null)
   }
 
   componentWillMount () {
@@ -28,7 +32,10 @@ class SearchBarContainer extends React.Component<Props> {
   }
 
   handleChange = query => {
-    this.delayedSearch(query.trim())
+    if (this.query !== query) { // prevent useless call when select exactly searched user
+      this.delayedSearch(query.trim())
+      this.query = query
+    }
   }
 
   handleSelectUser = o => {
@@ -68,6 +75,7 @@ class SearchBarContainer extends React.Component<Props> {
 }
 
 const mapStateToProps = state => ({
+  currentUser: state.users.currentUser,
   users: state.users.byId
 })
 

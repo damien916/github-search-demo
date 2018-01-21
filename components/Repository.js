@@ -1,10 +1,20 @@
+// @flow
 import React from 'react'
 import Badge from 'material-ui/Badge'
 import WatcherIcon from 'material-ui/svg-icons/action/visibility'
 import StarIcon from 'material-ui/svg-icons/toggle/star'
 import ForkIcon from 'material-ui/svg-icons/social/share'
 
-const Repository = ({ name, url, language, forks, stars, watchers }) => {
+type Props = {
+  name: String,
+  url: String,
+  language: String,
+  forks: Number,
+  stars: Number,
+  watchers: Number
+}
+
+const Repository = ({ name, url, language, forks, stars, watchers } : Props) => {
   return (
     <div className="repository">
       <div className="repository__language">{language}</div>

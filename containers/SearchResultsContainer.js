@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -6,7 +7,14 @@ import { Router } from '../routes'
 import { setSettings } from '../actions/settings'
 import SearchResults from '../components/SearchResults'
 
-class SearchResultsContainer extends React.Component {
+type Props = {
+  currentUser: Object,
+  repositories: Object,
+  view: String,
+  setSettings: Function
+}
+
+class SearchResultsContainer extends React.Component<Props> {
   showList = () => this.setView('list')
   showBlocs = () => this.setView('blocs')
 

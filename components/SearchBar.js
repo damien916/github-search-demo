@@ -1,7 +1,14 @@
+// @flow
 import React from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 
-const SearchBar = ({ userList, onUpdateInput, onSelectUser }) => (
+type Props = {
+  userList: Array<Object>,
+  onUpdateInput: Function,
+  onSelectUser: Function
+}
+
+const SearchBar = ({ userList, onUpdateInput, onSelectUser } : Props) => (
   <div className="search-bar">
     <AutoComplete
       hintText="Search GitHub user by name"

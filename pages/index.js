@@ -1,3 +1,5 @@
+// @flow
+import React from 'react'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import initStore from '../store'
@@ -10,7 +12,11 @@ import { fetchRepositories } from '../actions/users'
 import { setSettings } from '../actions/settings'
 import stylesheet from 'styles/index.scss'
 
-class Index extends React.Component {
+type Props = {
+  userAgent: String
+}
+
+class Index extends React.Component<Props> {
   static async getInitialProps ({ store, isServer, req, query }) {
     if (typeof query.username !== 'undefined') {
       await store.dispatch(fetchRepositories(query.username))

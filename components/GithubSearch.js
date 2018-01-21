@@ -1,10 +1,15 @@
+// @flow
 import React from 'react'
-import { connect } from "react-redux"
+import { connect } from 'react-redux'
 import SearchBarContainer from '../containers/SearchBarContainer'
 import SearchResultsContainer from '../containers/SearchResultsContainer'
 import Snackbar from 'material-ui/Snackbar'
 
-const GithubSearch = ({ errors }) => (
+type Props = {
+  errors: Array<String>
+}
+
+const GithubSearch = ({ errors } : Props) => (
   <div>
     <SearchBarContainer/>
     <SearchResultsContainer/>

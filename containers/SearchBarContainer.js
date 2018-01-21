@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -6,7 +7,16 @@ import _ from 'lodash'
 import { fetchUsers, setCurrentUser, fetchRepositories } from '../actions/users'
 import SearchBar from '../components/SearchBar'
 
-class SearchBarContainer extends React.Component {
+type Props = {
+  users: Object,
+  fetchUsers: Function,
+  setCurrentUser: Function,
+  fetchRepositories: Function
+}
+
+class SearchBarContainer extends React.Component<Props> {
+  delayedSearch: Function
+
   constructor (props) {
     super(props)
   }

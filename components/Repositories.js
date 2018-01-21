@@ -1,7 +1,13 @@
+// @flow
 import React from 'react'
 import Repository from './Repository'
 
-const Repositories = ({ entries, view }) => {
+type Props = {
+  entries: Array<Object>,
+  view: String
+}
+
+const Repositories = ({ entries, view } : Props) => {
   if (entries.length === 0) {
     return (
       <p className="repositories__none">This user has no public repositories</p>
@@ -9,6 +15,7 @@ const Repositories = ({ entries, view }) => {
   }
 
   return (
+    // FlowIgnore
     <div className={`repositories__${view}`}>
      { entries.map(entry => <Repository key={entry.id} {...entry} />) }
     </div>

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { Card, CardHeader, CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -5,7 +6,15 @@ import ListIcon from 'material-ui/svg-icons/action/list'
 import BlocsIcon from 'material-ui/svg-icons/navigation/apps'
 import Repositories from './Repositories'
 
-const SearchResults = ({ user, showList, showBlocs, repositories, view }) => {
+type Props = {
+  user: Object,
+  showList: Function,
+  showBlocs: Function,
+  repositories: Array<Object>,
+  view: String
+}
+
+const SearchResults = ({ user, showList, showBlocs, repositories, view } : Props) => {
   return (
     <Card className="card" expandable={false}>
       <CardHeader
